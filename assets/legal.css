@@ -1,0 +1,133 @@
+/* Shared styles for the /privacy and /imprint pages.
+   Neutral graphite chrome, matching the Couch Games launcher. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.75;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+.legal-shell {
+  width: 100%;
+  /* Match the landing page's main container (.wrap) so the two pages share the
+     same width and gutters. */
+  max-width: 1120px;
+  /* Only a small baseline top padding here — the rest of the gap above the
+     title lives on the h1, so that when the apps hide the h1 via CSS injection
+     (they have a native title bar) most of the gap collapses but the content
+     still keeps a little breathing room from the top. */
+  padding: clamp(1.5rem, 3vh, 2rem) clamp(1.25rem, 4vw, 2.5rem) clamp(2rem, 4vh, 3rem);
+}
+
+h1 {
+  font-family: var(--font-sans);
+  color: var(--on-surface);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+  /* Together with .legal-shell's top padding this sums to the full gap above
+     the title on web; in-app the h1 is hidden so only the shell padding remains. */
+  padding-top: clamp(1rem, 3vh, 1.5rem);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.intro {
+  margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+/* Friendly plain-language summary above the formal notice. */
+.summary {
+  padding: 1.3rem 1.5rem;
+  background: var(--surface-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+.summary strong { color: var(--on-surface); }
+
+/* Language toggle (DE ↔ EN) in the footer. */
+.lang-switch { text-transform: uppercase; letter-spacing: 0.04em; font-size: 13px; }
+
+dt {
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 1.8rem;
+}
+
+dt:first-child { margin-top: 0; }
+
+dd { margin: 0.3rem 0 0 0; }
+
+a {
+  color: var(--on-surface);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--outline);
+  transition: text-decoration-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+a:hover,
+a:focus-visible,
+a:active {
+  text-decoration-color: currentColor;
+}
+
+a:active { opacity: 0.6; }
+
+a:focus-visible {
+  outline: 2px solid var(--outline);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--surface-highest);
+  color: var(--on-surface);
+}
+
+.objection {
+  margin-top: 2.5rem;
+  padding: 1.3rem 1.5rem;
+  background: var(--surface-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+}
+
+.objection h2 {
+  color: var(--on-surface);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.8rem 0;
+}
+
+.objection p { margin: 0; }
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--outline-variant);
+  font-size: 14px;
+  opacity: 0.8;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAFB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0F11" media="(prefers-color-scheme: dark)">
+  <title>Couch Games</title>
+  <meta name="description" content="Couch Games turns your TV into the game and everyone's phone into a controller. Scan a QR code to join — no install, no extra gamepads. Starring HexStacker Party.">
+  <link rel="canonical" href="https://couch-games.com/">
+  <link rel="alternate" hreflang="en" href="https://couch-games.com/">
+  <link rel="alternate" hreflang="de" href="https://couch-games.com/de/">
+  <link rel="alternate" hreflang="x-default" href="https://couch-games.com/">
+  <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Couch Games — play together on the big screen">
+  <meta property="og:description" content="The TV is the game, your phone is the controller. Scan a QR code and play — no install.">
+  <meta property="og:url" content="https://couch-games.com/">
+  <meta property="og:image" content="https://couch-games.com/assets/artwork/hexstacker-16x9.webp">
+  <link rel="stylesheet" href="/assets/theme.css?v=2">
+  <link rel="stylesheet" href="/assets/landing.css?v=1">
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Offered to visitors whose browser prefers German. Suggests, never forces;
+         dismissal and the footer toggle are both remembered in localStorage. -->
+    <aside class="langbar" id="langbar" hidden>
+      <span>Diese Seite gibt es auch auf Deutsch.</span>
+      <a class="langbar__accept" href="/de/" data-lang-set="de">Auf Deutsch anzeigen →</a>
+      <button class="langbar__dismiss" type="button" aria-label="Schließen">✕</button>
+    </aside>
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 100 100" aria-hidden="true" fill="none">
+          <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M39 23 H31 a8 8 0 0 0 -8 8 V39"/>
+            <path d="M61 23 H69 a8 8 0 0 1 8 8 V39"/>
+            <path d="M61 77 H69 a8 8 0 0 0 8 -8 V61"/>
+            <path d="M39 77 H31 a8 8 0 0 1 -8 -8 V61"/>
+          </g>
+          <path d="M43 39 L43 61 L60 50 Z" fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        Couch&nbsp;Games
+      </a>
+      <a class="topbar__mail" href="mailto:info@couch-games.com">info@couch-games.com</a>
+    </header>
+
+    <section class="feature" aria-labelledby="feature-title">
+      <img class="feature__bg" src="/assets/artwork/hexstacker-16x9.webp" alt="HexStacker Party key art" width="1600" height="900">
+      <div class="feature__veil" aria-hidden="true"></div>
+      <div class="feature__inner">
+        <span class="badge">Live</span>
+        <h1 id="feature-title">HexStacker Party</h1>
+        <p>Stack, Clear, Outlast Your Friends.<br><span style="opacity: 0.8; font-size: 0.92em;">Apple&nbsp;TV &amp; Android&nbsp;TV soon.</span></p>
+        <a class="cta" href="https://hexstacker.com">Play now</a>
+      </div>
+    </section>
+
+        <section class="how" aria-label="How it works">
+      <div class="how__art" aria-hidden="true">
+        <!-- TV showing an abstract (not real) square QR — three finder eyes,
+             a bottom-right alignment mark, and sparse data modules — with a
+             portrait phone as controller (D-pad + buttons in its lower half)
+             overlapping the TV corner. One SVG so the composition can't drift. -->
+        <svg viewBox="0 0 180 118" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+          <!-- TV; stand centered under the part the phone doesn't cover -->
+          <rect x="2.5" y="2.5" width="145" height="87" rx="7"/>
+          <path d="M67 89.5v10" stroke-linecap="round"/>
+          <path d="M50 100h34" stroke-linecap="round"/>
+          <!-- abstract square QR (footprint x39–94, y18–73), shifted to center on the TV screen (75,46) -->
+          <g fill="currentColor" stroke="none" transform="translate(8.5 0.5)">
+            <rect x="39" y="18" width="15" height="15" rx="3.4"/><rect x="42.5" y="21.5" width="8" height="8" rx="2.2" fill="var(--surface-low)"/><rect x="44.5" y="23.5" width="4" height="4" rx="1.2"/><rect x="79" y="18" width="15" height="15" rx="3.4"/><rect x="82.5" y="21.5" width="8" height="8" rx="2.2" fill="var(--surface-low)"/><rect x="84.5" y="23.5" width="4" height="4" rx="1.2"/><rect x="39" y="58" width="15" height="15" rx="3.4"/><rect x="42.5" y="61.5" width="8" height="8" rx="2.2" fill="var(--surface-low)"/><rect x="44.5" y="63.5" width="4" height="4" rx="1.2"/>
+            <rect x="79" y="58" width="10" height="10" rx="2.5"/><rect x="81.5" y="60.5" width="5" height="5" rx="1.4" fill="var(--surface-low)"/><rect x="83.0" y="62.0" width="2" height="2" rx="0.6"/>
+            <rect x="59.5" y="18.5" width="4" height="4" rx="1.1"/>
+            <rect x="69.5" y="18.5" width="4" height="4" rx="1.1"/>
+            <rect x="64.5" y="23.5" width="4" height="4" rx="1.1"/>
+            <rect x="59.5" y="28.5" width="4" height="4" rx="1.1"/>
+            <rect x="74.5" y="28.5" width="4" height="4" rx="1.1"/>
+            <rect x="44.5" y="33.5" width="4" height="4" rx="1.1"/>
+            <rect x="64.5" y="33.5" width="4" height="4" rx="1.1"/>
+            <rect x="84.5" y="33.5" width="4" height="4" rx="1.1"/>
+            <rect x="59.5" y="38.5" width="4" height="4" rx="1.1"/>
+            <rect x="69.5" y="38.5" width="4" height="4" rx="1.1"/>
+            <rect x="54.5" y="43.5" width="4" height="4" rx="1.1"/>
+            <rect x="74.5" y="43.5" width="4" height="4" rx="1.1"/>
+            <rect x="59.5" y="48.5" width="4" height="4" rx="1.1"/>
+            <rect x="69.5" y="48.5" width="4" height="4" rx="1.1"/>
+            <rect x="84.5" y="48.5" width="4" height="4" rx="1.1"/>
+            <rect x="64.5" y="53.5" width="4" height="4" rx="1.1"/>
+            <rect x="59.5" y="58.5" width="4" height="4" rx="1.1"/>
+            <rect x="69.5" y="58.5" width="4" height="4" rx="1.1"/>
+            <rect x="64.5" y="63.5" width="4" height="4" rx="1.1"/>
+            <rect x="59.5" y="68.5" width="4" height="4" rx="1.1"/>
+            <rect x="74.5" y="68.5" width="4" height="4" rx="1.1"/>
+          </g>
+          <!-- portrait phone as controller; its fill masks the TV corner behind it -->
+          <g transform="translate(124,24)">
+            <rect x="2.5" y="2.5" width="49" height="87" rx="9" fill="var(--surface-low)"/>
+            <path d="M20 9h14" stroke-linecap="round" opacity="0.5"/>
+            <g fill="currentColor" stroke="none">
+              <!-- D-pad (left) -->
+              <rect x="11.75" y="55" width="6.5" height="18" rx="2"/>
+              <rect x="6" y="60.75" width="18" height="6.5" rx="2"/>
+              <!-- action buttons (right) -->
+              <circle cx="38" cy="57" r="3.2"/><circle cx="38" cy="71" r="3.2"/>
+              <circle cx="31.5" cy="64" r="3.2"/><circle cx="44.5" cy="64" r="3.2"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="how__copy">
+        <h3>Scan to play</h3>
+        <p><span class="lead">Scan the code on your TV with your phone.</span><br>No install, no gamepads.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="more-heading">
+      <p class="section__label" id="more-heading">More games</p>
+      <div class="shelf">
+
+        <article class="tile tile--soon" style="--accent: var(--accent-tinytrack);">
+          <div class="tile__poster">
+            <img src="/assets/artwork/tinytrack-16x9.webp" alt="Tiny Track key art" width="1600" height="900" loading="lazy">
+            <span class="tile__status">Coming soon</span>
+          </div>
+          <div class="tile__body">
+            <h3>Tiny Track</h3>
+            <p>Low-poly kart racing for the couch.</p>
+          </div>
+        </article>
+
+        <article class="tile tile--soon" style="--accent: var(--accent-powder);">
+          <div class="tile__poster">
+            <img src="/assets/artwork/powder-16x9.webp" alt="Powder key art" width="1600" height="900" loading="lazy">
+            <span class="tile__status">Coming soon</span>
+          </div>
+          <div class="tile__body">
+            <h3>Powder</h3>
+            <p>Low-poly downhill skiing.</p>
+          </div>
+        </article>
+
+      </div>
+      <p class="apps-note">Free <strong>Couch Games</strong> app for iPhone and Android coming soon.</p>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <span>© 2026 Couch Games · Tim Vogel</span>
+        <nav class="footer-links">
+          <a href="/en/privacy">Privacy</a>
+          <a href="/en/imprint">Imprint</a>
+          <a href="mailto:info@couch-games.com">Contact</a>
+          <a href="/de/" class="lang-toggle" data-lang-set="de" hreflang="de">Deutsch</a>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="/assets/lang.js?v=2"></script>
+</body>
+</html>

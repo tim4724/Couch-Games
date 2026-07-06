@@ -1,0 +1,7 @@
+# Keep the image to just the static site.
+.git
+.gitignore
+.claude
+Dockerfile
+.dockerignore
+README.md

@@ -1,0 +1,72 @@
+/* ==========================================================
+   Couch Games — design tokens (MONO graphite chrome)
+   Mirrors the Couch Games Controller launcher: console-shell
+   pattern (PS5/Switch/Netflix). Neutral graphite chrome so
+   the game posters carry ALL the color. Material 3 values are
+   lifted verbatim from the app (theme/Color.kt, CGTheme.swift);
+   stock system type scale — no custom display face.
+   Follows the system light/dark setting.
+   ========================================================== */
+
+:root {
+  /* System type — the brand voice lives in the app icon and the
+     games' own art, not the launcher chrome. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Game accents (from games-manifest.json) — used sparingly; the
+     poster art does the real color work. */
+  --accent-hexstacker: #FF6B6B;
+  --accent-tinytrack: #4ECDC4;
+  --accent-powder: #A78BFA;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* ---- Light scheme (default) ---- */
+  --bg: #FAFAFB;
+  --surface: #FAFAFB;
+  --surface-lowest: #FFFFFF;
+  --surface-low: #F0F0F1;
+  --surface-container: #EBEBEC;
+  --surface-high: #E4E4E5;
+  --surface-highest: #DDDDDE;
+  --on-surface: #1C1B1F;
+  --on-surface-variant: #46464B;
+  --outline: #77767C;
+  --outline-variant: #CAC9CE;
+  --primary: #202024;
+  --on-primary: #FFFFFF;
+  --scrim: rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0F0F11;
+    --surface: #0F0F11;
+    --surface-lowest: #040405;
+    --surface-low: #151517;
+    --surface-container: #19191B;
+    --surface-high: #222224;
+    --surface-highest: #2A2A2C;
+    --on-surface: #E6E1E5;
+    --on-surface-variant: #C7C6CC;
+    --outline: #90909A;
+    --outline-variant: #44444A;
+    --primary: #E6E1E9;
+    --on-primary: #1C1B20;
+    --scrim: rgba(0, 0, 0, 0.65);
+  }
+}
+
+/* Kill the blue tap-highlight box mobile browsers overlay on links
+   and buttons; our own :active/:hover states carry the feedback. */
+* { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+}

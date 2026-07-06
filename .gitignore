@@ -1,0 +1,4 @@
+.claude/settings.local.json
+
+# OS / editor cruft
+.DS_Store

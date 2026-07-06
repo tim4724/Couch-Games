@@ -1,0 +1,93 @@
+name: Deploy
+
+# Production deploy only — triggered by pushing a bare-semver tag, e.g.:
+#   git tag 1.0.0 && git push origin 1.0.0
+# No dev/preview/branch deploys.
+on:
+  push:
+    tags:
+      - '[0-9]*'
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+  deploy:
+    runs-on: [self-hosted, k8s]
+    needs: build
+    environment: production
+    steps:
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v5
+        with:
+          version: v1.30.0
+
+      - name: Write kubeconfig
+        run: |
+          echo "${KUBECONFIG_B64}" | base64 -d > kubeconfig
+          echo "KUBECONFIG=$PWD/kubeconfig" >> "$GITHUB_ENV"
+        env:
+          KUBECONFIG_B64: ${{ secrets.KUBECONFIG_B64 }}
+
+      - name: Deploy to production
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE="ghcr.io/${REPO}:${TAG}"
+
+          echo "Deploying ${IMAGE} to production"
+          kubectl set image deployment/couch-games-site \
+            couch-games-site="${IMAGE}" -n couch-games-site
+          kubectl rollout status deployment/couch-games-site \
+            -n couch-games-site --timeout=120s
+
+          {
+            echo "### Production Deploy ${TAG}"
+            echo "- Image: \`${IMAGE}\`"
+            echo "- URL: https://couch-games.com"
+          } >> "$GITHUB_STEP_SUMMARY"
