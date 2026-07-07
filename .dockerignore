@@ -1,5 +1,6 @@
 # Keep the image to just the static site.
 .git
+.github
 .gitignore
 .claude
 Dockerfile

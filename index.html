@@ -19,15 +19,15 @@
   <meta property="og:description" content="The TV is the game, your phone is the controller. Scan a QR code and play — no install.">
   <meta property="og:url" content="https://couch-games.com/">
   <meta property="og:image" content="https://couch-games.com/assets/artwork/hexstacker-16x9.webp">
-  <link rel="stylesheet" href="/assets/theme.css?v=2">
-  <link rel="stylesheet" href="/assets/landing.css?v=1">
+  <link rel="stylesheet" href="/assets/theme.css?v=3">
+  <link rel="stylesheet" href="/assets/landing.css?v=2">
 </head>
 <body>
   <div class="wrap">
 
     <!-- Offered to visitors whose browser prefers German. Suggests, never forces;
          dismissal and the footer toggle are both remembered in localStorage. -->
-    <aside class="langbar" id="langbar" hidden>
+    <aside class="langbar" id="langbar" lang="de" hidden>
       <span>Diese Seite gibt es auch auf Deutsch.</span>
       <a class="langbar__accept" href="/de/" data-lang-set="de">Auf Deutsch anzeigen →</a>
       <button class="langbar__dismiss" type="button" aria-label="Schließen">✕</button>
@@ -50,12 +50,15 @@
     </header>
 
     <section class="feature" aria-labelledby="feature-title">
-      <img class="feature__bg" src="/assets/artwork/hexstacker-16x9.webp" alt="HexStacker Party key art" width="1600" height="900">
+      <img class="feature__bg" src="/assets/artwork/hexstacker-16x9.webp"
+           srcset="/assets/artwork/hexstacker-16x9-960.webp 960w, /assets/artwork/hexstacker-16x9.webp 1920w"
+           sizes="(max-width: 1160px) 100vw, 1040px"
+           alt="HexStacker Party key art" width="1600" height="900" fetchpriority="high">
       <div class="feature__veil" aria-hidden="true"></div>
       <div class="feature__inner">
         <span class="badge">Live</span>
         <h1 id="feature-title">HexStacker Party</h1>
-        <p>Stack, Clear, Outlast Your Friends.<br><span style="opacity: 0.8; font-size: 0.92em;">Apple&nbsp;TV &amp; Android&nbsp;TV soon.</span></p>
+        <p>Stack, Clear, Outlast Your Friends.<br><span class="feature__sub">Apple&nbsp;TV &amp; Android&nbsp;TV soon.</span></p>
         <a class="cta" href="https://hexstacker.com">Play now</a>
       </div>
     </section>
@@ -113,18 +116,21 @@
         </svg>
       </div>
       <div class="how__copy">
-        <h3>Scan to play</h3>
+        <h2>Scan to play</h2>
         <p><span class="lead">Scan the code on your TV with your phone.</span><br>No install, no gamepads.</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="more-heading">
-      <p class="section__label" id="more-heading">More games</p>
+      <h2 class="section__label" id="more-heading">More games</h2>
       <div class="shelf">
 
-        <article class="tile tile--soon" style="--accent: var(--accent-tinytrack);">
+        <article class="tile tile--soon tile--tinytrack">
           <div class="tile__poster">
-            <img src="/assets/artwork/tinytrack-16x9.webp" alt="Tiny Track key art" width="1600" height="900" loading="lazy">
+            <img src="/assets/artwork/tinytrack-16x9.webp"
+                 srcset="/assets/artwork/tinytrack-16x9-960.webp 960w, /assets/artwork/tinytrack-16x9.webp 1920w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 330px"
+                 alt="Tiny Track key art" width="1600" height="900" loading="lazy">
             <span class="tile__status">Coming soon</span>
           </div>
           <div class="tile__body">
@@ -133,9 +139,12 @@
           </div>
         </article>
 
-        <article class="tile tile--soon" style="--accent: var(--accent-powder);">
+        <article class="tile tile--soon tile--powder">
           <div class="tile__poster">
-            <img src="/assets/artwork/powder-16x9.webp" alt="Powder key art" width="1600" height="900" loading="lazy">
+            <img src="/assets/artwork/powder-16x9.webp"
+                 srcset="/assets/artwork/powder-16x9-960.webp 960w, /assets/artwork/powder-16x9.webp 1920w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 330px"
+                 alt="Powder key art" width="1600" height="900" loading="lazy">
             <span class="tile__status">Coming soon</span>
           </div>
           <div class="tile__body">

@@ -8,6 +8,7 @@ body {
   color: var(--on-surface);
   font-family: var(--font-sans);
   line-height: 1.6;
+  min-height: 100vh; /* fallback for browsers without dvh (Safari < 15.4) */
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -61,16 +62,17 @@ a { color: inherit; }
   align-items: flex-end;
   border: 1px solid var(--outline-variant);
 }
+/* top/right/bottom/left instead of `inset` so Safari < 14.5 keeps the hero. */
 .feature__bg {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: 70% center;
 }
 .feature__veil {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background:
     linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.8) 38%, rgba(0,0,0,0.42) 68%, rgba(0,0,0,0.12) 100%),
     linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 45%);
@@ -126,6 +128,7 @@ a { color: inherit; }
   margin-bottom: 1.4rem;
   max-width: 42ch;
 }
+.feature__sub { opacity: 0.8; font-size: 0.92em; }
 .cta {
   display: inline-flex;
   align-items: center;
@@ -158,7 +161,7 @@ a { color: inherit; }
 }
 .how__art { flex: none; color: var(--on-surface); }
 .how__art svg { display: block; width: clamp(160px, 27vw, 186px); }
-.how__copy h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+.how__copy h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
 .how__copy p { font-size: 0.95rem; color: var(--on-surface-variant); max-width: 44ch; }
 .how__copy p .lead { color: var(--on-surface); }
 @media (max-width: 560px) {
@@ -194,6 +197,10 @@ a { color: inherit; }
   transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
 .tile:hover { transform: translateY(-4px); border-color: var(--accent); }
+/* Per-game accents as modifier classes (not inline style="--accent: …")
+   so the CSP can stay strict with no 'unsafe-inline' in style-src. */
+.tile--tinytrack { --accent: var(--accent-tinytrack); }
+.tile--powder { --accent: var(--accent-powder); }
 .tile__poster { position: relative; aspect-ratio: 16 / 9; background: var(--surface-container); }
 .tile__poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tile--soon .tile__poster img { filter: saturate(0.85) brightness(0.9); opacity: 0.9; }

@@ -67,6 +67,16 @@
    and buttons; our own :active/:hover states carry the feedback. */
 * { -webkit-tap-highlight-color: transparent; }
 
+/* Site-wide keyboard-focus ring. Components with their own ring (e.g. the
+   hero CTA on dark artwork) override this with a more specific selector. */
+:focus-visible {
+  outline: 2px solid var(--outline);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

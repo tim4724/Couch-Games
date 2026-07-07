@@ -9,6 +9,7 @@ body {
   font-family: var(--font-sans);
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.75;
+  min-height: 100vh; /* fallback for browsers without dvh (Safari < 15.4) */
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
