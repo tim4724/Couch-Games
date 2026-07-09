@@ -142,6 +142,15 @@ a { color: inherit; }
   text-decoration: none;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
+/* Optically center the label: trim the line box down to the glyph's
+   cap/baseline so vertical centering follows the visible text rather than the
+   font's (device-dependent) ascender/descender reserve, which otherwise makes
+   the label sit slightly high — noticeably so on some fallback fonts.
+   Progressive enhancement: ignored where unsupported, leaving prior rendering. */
+.cta__label {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
 .cta::after { content: "→"; }
 .cta:hover { opacity: 0.92; }
 .cta:active { transform: translateY(1px); }
