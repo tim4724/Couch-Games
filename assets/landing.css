@@ -70,12 +70,14 @@ a { color: inherit; }
   object-fit: cover;
   object-position: 70% center;
 }
+/* Darkening hugs the bottom-left corner where the copy sits; the art stays
+   clear toward the top-right. */
 .feature__veil {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.8) 38%, rgba(0,0,0,0.42) 68%, rgba(0,0,0,0.12) 100%),
-    linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 45%);
+  background: radial-gradient(120% 140% at 0% 100%,
+    rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.7) 30%,
+    rgba(0,0,0,0.38) 55%, rgba(0,0,0,0) 82%);
 }
 /* On narrow screens the text stacks at the bottom, so darken bottom-up
    instead of left-to-right — keeps the headline off the busy hex art. */
@@ -83,8 +85,8 @@ a { color: inherit; }
   .feature__bg { object-position: 58% center; }
   .feature__veil {
     background: linear-gradient(0deg,
-      rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.85) 46%,
-      rgba(0,0,0,0.55) 72%, rgba(0,0,0,0.2) 100%);
+      rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.75) 46%,
+      rgba(0,0,0,0.44) 72%, rgba(0,0,0,0.12) 100%);
   }
 }
 

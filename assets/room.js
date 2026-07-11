@@ -26,33 +26,6 @@
   var SHARED_RELAY = 'https://ws.couch-games.com';
   var OWN_HOST = 'couch-games.com'; // preview deployments live on subdomains
 
-  // ---- Room-code region decoding (mirrors Party-Sockets regions.ts/server.ts:
-  // 6-char base58, top 5 bits = Fly region index, low 30 bits random) ----
-  var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-  var REGIONS = ['ams', 'arn', 'bom', 'cdg', 'dfw', 'ewr', 'fra', 'gru', 'iad',
-    'jnb', 'lax', 'lhr', 'nrt', 'ord', 'sin', 'sjc', 'syd', 'yyz'];
-  var REGION_NAMES = {
-    ams: 'Amsterdam', arn: 'Stockholm', bom: 'Mumbai', cdg: 'Paris',
-    dfw: 'Dallas', ewr: 'New York', fra: 'Frankfurt', gru: 'São Paulo',
-    iad: 'Washington D.C.', jnb: 'Johannesburg', lax: 'Los Angeles',
-    lhr: 'London', nrt: 'Tokyo', ord: 'Chicago', sin: 'Singapore',
-    sjc: 'San Jose', syd: 'Sydney', yyz: 'Toronto'
-  };
-  var BODY_DIVISOR = Math.pow(2, 30);
-  var MAX_CODE_VALUE = Math.pow(2, 35) - 1;
-
-  function regionOf(code) {
-    var value = 0; // 35 bits — safe in a double, no BigInt needed
-    for (var i = 0; i < code.length; i++) {
-      var v = ALPHABET.indexOf(code[i]);
-      if (v === -1) return null;
-      value = value * 58 + v;
-    }
-    if (value > MAX_CODE_VALUE) return null;
-    var region = REGIONS[Math.floor(value / BODY_DIVISOR)];
-    return region ? (REGION_NAMES[region] || region.toUpperCase()) : null;
-  }
-
   // ---- DOM ----
   var el = {
     card: document.getElementById('roomcard'),
@@ -62,7 +35,6 @@
     code: document.getElementById('room-code'),
     meta: document.getElementById('room-meta'),
     game: document.getElementById('room-game'),
-    region: document.getElementById('room-region'),
     browser: document.getElementById('join-browser'),
     ios: document.getElementById('app-ios'),
     iosSub: document.getElementById('app-ios-sub'),
@@ -186,14 +158,6 @@
         if (game) {
           el.game.textContent = game.name;
           el.game.hidden = false;
-        }
-        // Only multi-instance relay deployments (which pin an #instance into
-        // the join link) region-encode their codes — without that signal the
-        // decoded "region" would just be random bits, so show none.
-        var region = instance ? regionOf(code) : null;
-        if (region) {
-          el.region.textContent = region;
-          el.region.hidden = false;
         }
         el.status.hidden = true; // the banner speaks for itself once live
         el.browser.href = joinUrl;

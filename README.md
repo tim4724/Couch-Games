@@ -17,33 +17,18 @@ light/dark setting. Tokens live in `assets/theme.css`.
 
 ## Structure
 
-- `index.html` — landing page (games, how-it-works)
-- `room.html` — room join page, served at `/<CODE>#<instance>` (nginx maps any
-  6-char base58 path to it). Browser fallback for the app deep links in
-  `.well-known/`: resolves the code via the relay directories, shows the room,
-  and offers browser play + the app stores. A join target that doesn't vet
-  against the manifest's host allow-list renders as "Room not found" — we never
-  link a game we can't identify. Store URLs/sizes are constants atop
-  `assets/room.js` — fill them in when the apps go live.
-- `games-manifest.json` — web-served counterpart of the controller apps'
-  bundled manifest (same schema; art paths point at `/assets/artwork/`).
-  Drives the room page's game names, art, host allow-list, and per-game
-  relays; the apps are meant to fetch it at runtime later so a new game or
-  banner change is one site deploy. Keep it in sync with
-  `Couch-Games-Controller/android/app/src/main/assets/games-manifest.json`.
-- `privacy.html` — Datenschutzerklärung (German, DSGVO; umbrella policy for
-  couch-games.com and every offering on the shared infra — the web games, the
-  Couch Games app and the TV apps; also covers future games on the same infra,
-  regardless of the domain or subdomain they ship on)
-- `imprint.html` — Impressum (German, § 5 DDG)
-- `assets/theme.css` — design tokens (graphite chrome, light/dark)
-- `assets/legal.css` — shared styles for the legal pages
-- `assets/artwork/*.webp` — 16×9 game posters (mirrored from the controller repo)
-
-Legal text originated from HexStacker's policy and has been broadened to the
-Couch Games umbrella (couch-games.com plus all games on the shared servers/
-infra), so it no longer tracks the hexstacker.com copy verbatim. Operator is
-Tim Vogel, info@couch-games.com. Serve any way you like — it's fully static.
+- `index.html`, `de/index.html` — landing page (EN / DE)
+- `room.html` + `assets/room.js` — room join page, served at `/<CODE>#<instance>`
+  (nginx maps any 6-char base58 path to it); browser fallback for the app deep
+  links in `.well-known/`
+- `games-manifest.json` — drives the room page and is fetched by the controller
+  apps. Keep in sync with the controller repo's bundled copy; when a poster's
+  bytes change, bump the `?v=` in its `art` path (the apps cache artwork by URL)
+- `privacy.html`, `imprint.html` — legal pages (German, umbrella policy for all
+  Couch Games infra); English versions in `en/`
+- `assets/` — CSS (design tokens in `theme.css`) and 16×9 game posters in
+  `artwork/`
+- `nginx.conf`, `Dockerfile` — the deployed container; fully static otherwise
 
 ## Local preview
 
