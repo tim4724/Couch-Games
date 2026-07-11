@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAFB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0F11" media="(prefers-color-scheme: dark)">
+  <title>Join room · Couch Games</title>
+  <meta name="description" content="Join a Couch Games room from your phone — play in the browser or with the free app.">
+  <!-- Per-room URLs are ephemeral (rooms expire); keep them out of search indexes. -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Join my Couch Games room">
+  <meta property="og:description" content="The TV is the game, your phone is the controller. Tap to join the room.">
+  <meta property="og:image" content="https://couch-games.com/assets/artwork/hexstacker-16x9.webp">
+  <link rel="stylesheet" href="/assets/theme.css?v=3">
+  <link rel="stylesheet" href="/assets/landing.css?v=2">
+  <link rel="stylesheet" href="/assets/room.css?v=9">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 100 100" aria-hidden="true" fill="none">
+          <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M39 23 H31 a8 8 0 0 0 -8 8 V39"/>
+            <path d="M61 23 H69 a8 8 0 0 1 8 8 V39"/>
+            <path d="M61 77 H69 a8 8 0 0 0 8 -8 V61"/>
+            <path d="M39 77 H31 a8 8 0 0 1 -8 -8 V61"/>
+          </g>
+          <path d="M43 39 L43 61 L60 50 Z" fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        Couch&nbsp;Games
+      </a>
+      <a class="topbar__mail" href="mailto:info@couch-games.com">info@couch-games.com</a>
+    </header>
+
+    <main class="room">
+
+      <section class="roomcard" id="roomcard" aria-labelledby="room-code">
+        <img class="roomcard__bg" id="room-art" alt="" width="1600" height="900" hidden>
+        <div class="roomcard__veil" aria-hidden="true"></div>
+        <!-- Not-found placeholder: the brand viewfinder, play triangle swapped
+             for a question mark. -->
+        <svg class="roomcard__mark" id="room-mark" viewBox="0 0 100 100" aria-hidden="true" fill="none" hidden>
+          <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M39 23 H31 a8 8 0 0 0 -8 8 V39"/>
+            <path d="M61 23 H69 a8 8 0 0 1 8 8 V39"/>
+            <path d="M61 77 H69 a8 8 0 0 0 8 -8 V61"/>
+            <path d="M39 77 H31 a8 8 0 0 1 -8 -8 V61"/>
+          </g>
+          <text x="50" y="64" text-anchor="middle" fill="currentColor" font-size="42" font-weight="800">?</text>
+        </svg>
+        <span class="chip roomcard__region" id="room-region" hidden></span>
+        <div class="roomcard__inner">
+          <span class="badge badge--wait" id="room-status" role="status">Checking room…</span>
+          <p class="roomcard__game" id="room-game" role="status" hidden></p>
+          <p class="roomcard__code" id="room-code"></p>
+          <p class="roomcard__meta" id="room-meta" hidden></p>
+        </div>
+      </section>
+
+      <section class="join" aria-label="Ways to play">
+        <a class="joinbtn" id="join-browser" hidden>
+          <span class="joinbtn__label">Play in browser</span>
+        </a>
+
+        <div class="join__apps" id="join-apps">
+          <!-- hrefs + availability are filled in by room.js (store URLs are constants there) -->
+          <a class="appbtn" id="app-ios">
+            <svg class="appbtn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M17.05 12.54c-.03-2.55 2.08-3.77 2.17-3.83-1.18-1.73-3.02-1.97-3.68-2-1.56-.16-3.05.92-3.84.92-.79 0-2.02-.9-3.32-.87-1.7.03-3.28.99-4.16 2.52-1.78 3.08-.45 7.63 1.28 10.13.85 1.22 1.85 2.6 3.17 2.55 1.28-.05 1.76-.83 3.3-.83 1.54 0 1.98.83 3.32.8 1.38-.02 2.25-1.24 3.08-2.47.97-1.42 1.37-2.8 1.39-2.87-.03-.01-2.67-1.02-2.71-4.05z"/>
+              <path d="M14.51 4.99c.7-.85 1.18-2.03 1.05-3.21-1.01.04-2.24.67-2.97 1.52-.65.75-1.22 1.96-1.07 3.11 1.13.09 2.28-.57 2.99-1.42z"/>
+            </svg>
+            <span class="appbtn__text">
+              <span class="appbtn__title">Download iOS app</span>
+              <span class="appbtn__sub" id="app-ios-sub">App Store</span>
+            </span>
+          </a>
+          <a class="appbtn" id="app-android">
+            <svg class="appbtn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M15.6 6.36l1.33-2.3a.42.42 0 0 0-.15-.57.42.42 0 0 0-.57.15l-1.35 2.34A8.9 8.9 0 0 0 12 5.5a8.9 8.9 0 0 0-2.86.48L7.79 3.64a.42.42 0 0 0-.57-.15.42.42 0 0 0-.15.57l1.33 2.3A8.06 8.06 0 0 0 4 13.5h16a8.06 8.06 0 0 0-4.4-7.14zM8.75 10.75a.94.94 0 1 1 0-1.88.94.94 0 0 1 0 1.88zm6.5 0a.94.94 0 1 1 0-1.88.94.94 0 0 1 0 1.88z"/>
+            </svg>
+            <span class="appbtn__text">
+              <span class="appbtn__title">Download Android app</span>
+              <span class="appbtn__sub" id="app-android-sub">Google Play</span>
+            </span>
+          </a>
+        </div>
+
+        <noscript>
+          <p class="join__hint">JavaScript is needed to look up this room.</p>
+        </noscript>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-row">
+        <span>© 2026 Couch Games · Tim Vogel</span>
+        <nav class="footer-links">
+          <a href="/en/privacy">Privacy</a>
+          <a href="/en/imprint">Imprint</a>
+          <a href="mailto:info@couch-games.com">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="/assets/room.js?v=5"></script>
+</body>
+</html>

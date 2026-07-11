@@ -18,6 +18,19 @@ light/dark setting. Tokens live in `assets/theme.css`.
 ## Structure
 
 - `index.html` — landing page (games, how-it-works)
+- `room.html` — room join page, served at `/<CODE>#<instance>` (nginx maps any
+  6-char base58 path to it). Browser fallback for the app deep links in
+  `.well-known/`: resolves the code via the relay directories, shows the room,
+  and offers browser play + the app stores. A join target that doesn't vet
+  against the manifest's host allow-list renders as "Room not found" — we never
+  link a game we can't identify. Store URLs/sizes are constants atop
+  `assets/room.js` — fill them in when the apps go live.
+- `games-manifest.json` — web-served counterpart of the controller apps'
+  bundled manifest (same schema; art paths point at `/assets/artwork/`).
+  Drives the room page's game names, art, host allow-list, and per-game
+  relays; the apps are meant to fetch it at runtime later so a new game or
+  banner change is one site deploy. Keep it in sync with
+  `Couch-Games-Controller/android/app/src/main/assets/games-manifest.json`.
 - `privacy.html` — Datenschutzerklärung (German, DSGVO; umbrella policy for
   couch-games.com and every offering on the shared infra — the web games, the
   Couch Games app and the TV apps; also covers future games on the same infra,
